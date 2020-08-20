@@ -48,15 +48,15 @@ Things you may want to cover:
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| item_name     | string  | null: false |
-| item_describe | string  | null: false |
+| name          | string  | null: false |
+| describe      | string  | null: false |
 | category      | integer | null: false |
 | status        | integer | null: false |
 | delivery_fee  | integer | null: false |
 | ship_address  | integer | null: false |
 | ship_date     | integer | null: false |
 | price         | string  | null: false |
-| user          | integer | null: false, foreign_key: true |
+| user_id       | integer | null: false, foreign_key: true |
 
 ### Association
 
