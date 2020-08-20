@@ -73,10 +73,10 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase
+- belongs_to :item
 - has_one :address
 
-##  addressesテーブル 　保存をしないので紐付けはなし
+##  addressesテーブル  保存をしないので紐付けはなし
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
@@ -86,3 +86,5 @@ Things you may want to cover:
 | house_number | string     | null: false |
 | apartment    | string     |             |
 | phone_number | string     | null: false |
+
+- belongs_to :purchase
