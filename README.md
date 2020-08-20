@@ -28,15 +28,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| nickname   | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| name       | string | null: false |
-| name_kana  | string | null: false |
-| birth_date | string | null: false |
-| user_id    | string | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| last_name       | string | null: false |
+| first_name      | string | null: false |
+| last_name_kana  | string | null: false |
+| first_name_kana | string | null: false |
+| birth_date      | date   | null: false |
 
 ### Association
 
@@ -45,24 +46,37 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column        | Type   | Options     |
-| ------------- | ------ | ----------- |
-| item_name     | string | null: false |
-| item_describe | string | null: false |
-| category      | string | null: false |
-| status        | string | null: false |
-| delivery_fee  | string | null: false |
-| ship_address  | string | null: false |
-| ship_date     | string | null: false |
-| price         | string | null: false |
-| user          | string | null: false, foreign_key: true |
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| item_name     | string  | null: false |
+| item_describe | string  | null: false |
+| category      | integer | null: false |
+| status        | integer | null: false |
+| delivery_fee  | integer | null: false |
+| ship_address  | integer | null: false |
+| ship_date     | integer | null: false |
+| price         | string  | null: false |
+| user          | integer | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_many :purchase
+
+##  purchasesテーブル 中間テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | reference  | null: false, foreign_key: true |
+| item         | reference  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :purchase
+- has_one :address
 
-##  purchasesテーブル
+##  addressesテーブル 　保存をしないので紐付けはなし
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
@@ -72,10 +86,3 @@ Things you may want to cover:
 | house_number | string     | null: false |
 | apartment    | string     |             |
 | phone_number | string     | null: false |
-| user          | string | null: false, foreign_key: true |
-| item          | string | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :purchase
