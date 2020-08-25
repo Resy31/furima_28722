@@ -6,6 +6,17 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
+    context '新規登録が出来るとき' do
+      it 'フォームを全て入力している' do
+        expect(@user).to be_valid
+      end
+      it 'passwordが6文字以上であれば登録できる' do
+        @user.password = "aaa111"
+        @user.password_confirmation = "aaa111"
+        expect(@user).to be_valid
+      end
+    end
+
     context '新規登録が出来ないとき' do
       it 'nicknameが空のとき' do
         @user.nickname = nil
