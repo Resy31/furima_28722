@@ -11,8 +11,8 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'passwordが6文字以上であれば登録できる' do
-        @user.password = "aaa111"
-        @user.password_confirmation = "aaa111"
+        @user.password = 'aaa111'
+        @user.password_confirmation = 'aaa111'
         expect(@user).to be_valid
       end
     end
