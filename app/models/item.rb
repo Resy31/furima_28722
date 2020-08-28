@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :delivery_fee, :ship_address, :ship_date, :status
+  belongs_to_active_hash :category
+  belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :status
+  belongs_to_active_hash :ship_address
+  belongs_to_active_hash :ship_date
 
   validates :name, presence: true
   validates :describe, presence: true
@@ -12,4 +16,5 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_many :purchase
+
 end
