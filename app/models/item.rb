@@ -5,11 +5,13 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   belongs_to_active_hash :ship_address
   belongs_to_active_hash :ship_date
+  has_one_attached :image
 
-  validates :name, presence: true
+  validates :image,    presence: true
+  validates :name,     presence: true
   validates :describe, presence: true
-  validates :price, presence: true
-  validates :user_id, presence: true
+  validates :price,    presence: true
+  validates :user_id,  presence: true
   validates :category, :delivery_fee, :ship_address, :ship_date, :status, presence: true
 
   validates :category_id, :delivery_fee_id, :ship_address_id, :ship_date_id, :status_id, numericality: { other_than: 1 }
