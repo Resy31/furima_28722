@@ -20,13 +20,10 @@ class ItemsController < ApplicationController
   private
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to user_session_path
-    end
+    redirect_to user_session_path unless user_signed_in?
   end
 
   def item_params
     params.require(:item).permit(:name, :describe, :price, :category_id, :delivery_fee_id, :ship_address_id, :ship_date_id, :status_id, :image)
   end
-
 end
