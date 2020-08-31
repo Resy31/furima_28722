@@ -60,8 +60,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it '価格の範囲が、¥300~¥9,999,999の間であること' do
+      it '価格が300円未満のとき' do
         @item.price = 100
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
+      end
+      it '価格が10,000,000円以上のとき' do
         @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Out of setting range')
