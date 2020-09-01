@@ -76,7 +76,7 @@ Things you may want to cover:
 - belongs_to :item
 - has_one :address
 
-##  addressesテーブル  保存をしないので紐付けはなし
+##  addressesテーブル 
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
