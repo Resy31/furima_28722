@@ -19,5 +19,5 @@ class Item < ApplicationRecord
   validates :category_id, :delivery_fee_id, :ship_address_id, :ship_date_id, :status_id, numericality: { other_than: 1, message: ' Select' }
 
   belongs_to :user
-  has_many :purchase
+  has_one :purchase
 end
