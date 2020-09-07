@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  before_action :move_to_session
+
 
   def index
     @item = Item.find(params[:item_id])
@@ -6,5 +8,12 @@ class PurchasesController < ApplicationController
 
   def create
   end
+
+  private
+
+  def move_to_session
+    redirect_to user_session_path unless user_signed_in?
+  end
+
 
 end
