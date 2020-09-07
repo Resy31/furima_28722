@@ -33,7 +33,7 @@
     <% end %>
         <%# 出品者以外表示 %>
       <% if user_signed_in? && current_user.id != @item.user_id %>
-        <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+        <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
       <% elsif %>
         <% @item.purchase == nil %>
       <% end %>
