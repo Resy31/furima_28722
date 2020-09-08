@@ -81,7 +81,7 @@ Things you may want to cover:
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
 | zip_code     | string     | null: false |
-| state        | string     | null: false |
+| ship_address | integer    | null: false |
 | city         | string     | null: false |
 | house_number | string     | null: false |
 | apartment    | string     |             |
