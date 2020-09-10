@@ -2,12 +2,14 @@ class PurchasesController < ApplicationController
   before_action :move_to_session
 
   def index
+    @purchase = ItemPurchase.new
     @item = Item.find(params[:item_id])
     return redirect_to root_path if current_user.id == @item.user.id
   end
 
   def create
-    @purchase = purchase.create(purchase_params)
+    @purchase = ItemPurchase.new(purchase_params)
+    @item = Item.find(params[:item_id])
     if @purchase.valid?
       pay_item
       @purchase.save
@@ -24,7 +26,7 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.permit(:token)
+    params.require(:item_purchase).permit(:zip_code, :ship_address_id, :city, :house_number, :apartment, :phone_number, :token).merge( item_id: params[:item_id], user_id: current_user.id )
   end
 
   def pay_item
