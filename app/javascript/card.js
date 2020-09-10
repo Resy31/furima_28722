@@ -20,10 +20,10 @@ const pay = () => {
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;//コントローラーに受け渡しているname
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      document.getElementById("number").removeAttribute("name");
-      document.getElementById("cvc").removeAttribute("name");
-      document.getElementById("exp_month").removeAttribute("name");
-      document.getElementById("exp_year").removeAttribute("name");//情報の削除
+      document.getElementById("card-number").removeAttribute("name");
+      document.getElementById("card-cvc").removeAttribute("name");
+      document.getElementById("card-exp-month").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");//情報の削除
  
       document.getElementById("charge-form").submit();//サーバーサイドに送信
       document.getElementById("charge-form").reset();
