@@ -12,10 +12,10 @@ class ItemPurchase
     validates :zip_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly"}
     validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/}
   end
-
+  
   def save
-    item_purchase = Purchase.create( user_id: user_id, item_id: item_id )
-    Address.create( zip_code: zip_code, ship_address_id: ship_address_id, city: city, house_number: house_number, apartment: apartment, phone_number: phone_number, item_purchase: item_purchase )
+    item_purchase = Purchase.create!(user_id: user_id, item_id: item_id)
+    Address.create!(zip_code: zip_code, ship_address_id: ship_address_id, city: city, house_number: house_number, apartment: apartment, phone_number: phone_number, purchase_id: item_purchase.id)
   end
 
 end
