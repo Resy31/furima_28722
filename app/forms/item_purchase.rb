@@ -6,7 +6,7 @@ class ItemPurchase
 
   with_options presence: true do
     validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
-    validates :token, :city, :house_number
+    validates :token, :city, :house_number 
     ZIP_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
     validates :zip_code, format: {with: ZIP_CODE_REGEX, message: 'Input correctly'}
   end
