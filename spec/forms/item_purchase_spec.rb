@@ -38,8 +38,12 @@ RSpec.describe ItemPurchase, type: :model do
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
       end
-      it '郵便番号が7桁以外と以下のとき' do
+      it '郵便番号が9桁のとき' do
         @purchase.zip_code = 1234-56789
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
+      end
+      it '郵便番号が5桁のとき' do
         @purchase.zip_code = 12-345
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
