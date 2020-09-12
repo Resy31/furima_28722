@@ -3,14 +3,17 @@ class ItemPurchase
   attr_accessor :zip_code, :ship_address_id, :city, :house_number, :apartment, :phone_number, :user_id, :item_id, :token
 
   validates :token,        presence: true
+  validates :zip_code,     presence: true
   validates :city,         presence: true
   validates :house_number, presence: true
   validates :ship_address_id, numericality: { other_than: 1, message: 'Select' }
 
   with_options presence: true do
-    validates :zip_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
     validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
   end
+
+  ZIP_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
+  validates_format_of :zip_code, with: ZIP_CODE_REGEX, message: 'Input correctly'
 
   def save
     item_purchase = Purchase.create!(user_id: user_id, item_id: item_id)
