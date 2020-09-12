@@ -6,7 +6,7 @@ class ItemPurchase
   validates :token,        presence: true
   validates :city,         presence: true
   validates :house_number, presence: true
-  validates :ship_address_id, numericality: { other_than: 1, message: ' Select' }
+  validates :ship_address_id, numericality: { other_than: 1, message: 'Select' }
 
   with_options presence: true do
     validates :zip_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly"}
