@@ -6,7 +6,7 @@ RSpec.describe ItemPurchase, type: :model do
     @item = FactoryBot.build(:item)
     @item.image = fixture_file_upload('public/images/test_image.png')
     @item.save
-    @purchase = FactoryBot.build(:item_purchase,user_id: @user.id,item_id: @item.id)
+    @purchase = FactoryBot.build(:item_purchase, user_id: @user.id, item_id: @item.id)
   end
 
   describe '商品購入機能' do
@@ -30,14 +30,14 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@purchase.errors.full_messages).to include("Zip code can't be blank")
       end
       it '郵便番号にハイフンがないとき' do
-        @purchase.zip_code = 1234567
+        @purchase.zip_code = 1_234_567
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Zip code Input correctly")
+        expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
       end
       it '都道府県が空のとき' do
         @purchase.ship_address_id = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Ship address Select")
+        expect(@purchase.errors.full_messages).to include('Ship address Select')
       end
       it '市区町村が空のとき' do
         @purchase.city = nil
@@ -55,9 +55,9 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@purchase.errors.full_messages).to include("Phone number can't be blank")
       end
       it '電話番号が10桁又は11桁ではないとき' do
-        @purchase.phone_number = 12345
+        @purchase.phone_number = 12_345
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase.errors.full_messages).to include('Phone number is invalid')
       end
     end
   end
