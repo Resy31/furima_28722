@@ -14,6 +14,10 @@ RSpec.describe ItemPurchase, type: :model do
       it 'フォームを全て入力している' do
         expect(@purchase).to be_valid
       end
+      it '建物名が空のとき' do
+        @purchase.apartment = nil
+        expect(@purchase).to be_valid
+      end
     end
 
     context '商品購入が出来ないとき' do
