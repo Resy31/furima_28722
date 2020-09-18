@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_date
   has_many_attached :images
 
-  validates :images,    presence: true
+  validates :images, presence: true
   validates :name,     presence: true
   validates :price,    presence: true
   validates :describe, presence: true

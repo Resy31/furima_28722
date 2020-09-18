@@ -39,12 +39,12 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
       end
       it '郵便番号が9桁のとき' do
-        @purchase.zip_code = 1234-56789
+        @purchase.zip_code = 1234 - 56_789
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
       end
       it '郵便番号が5桁のとき' do
-        @purchase.zip_code = 12-345
+        @purchase.zip_code = 12 - 345
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Zip code Input correctly')
       end
