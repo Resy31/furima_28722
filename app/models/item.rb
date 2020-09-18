@@ -5,9 +5,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   belongs_to_active_hash :ship_address
   belongs_to_active_hash :ship_date
-  has_one_attached :image
+  has_many_attached :images
 
-  validates :image,    presence: true
+  validates :images,    presence: true
   validates :name,     presence: true
   validates :price,    presence: true
   validates :describe, presence: true
