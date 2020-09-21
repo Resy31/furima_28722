@@ -2,13 +2,13 @@ class ItemPurchase
   include ActiveModel::Model
   attr_accessor :zip_code, :ship_address_id, :city, :house_number, :apartment, :phone_number, :user_id, :item_id, :token
 
-  validates :ship_address_id, numericality: { other_than: 1, message: 'Select' }
+  validates :ship_address_id, numericality: { other_than: 1, message: 'を選択して下さい' }
 
   with_options presence: true do
     validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
     validates :token, :city, :house_number
     ZIP_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
-    validates :zip_code, format: { with: ZIP_CODE_REGEX, message: 'Input correctly' }
+    validates :zip_code, format: { with: ZIP_CODE_REGEX, message: 'を正しく入力して下さい' }
   end
 
   def save
