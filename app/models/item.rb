@@ -14,9 +14,9 @@ class Item < ApplicationRecord
   validates :user_id,  presence: true
   validates :category, :delivery_fee, :ship_address, :ship_date, :status, presence: true
 
-  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'が設定範囲外です'
 
-  validates :category_id, :delivery_fee_id, :ship_address_id, :ship_date_id, :status_id, numericality: { other_than: 1, message: ' Select' }
+  validates :category_id, :delivery_fee_id, :ship_address_id, :ship_date_id, :status_id, numericality: { other_than: 1, message: 'を選択して下さい' }
 
   belongs_to :user
   has_one :purchase
