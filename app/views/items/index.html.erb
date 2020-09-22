@@ -130,6 +130,7 @@
       <li class='list'>
         <div class='item-img-content'>
           <%= link_to item_path(item.id), method: :get do %>
+            <% breadcrumb :root %>
             <%= image_tag item.images[0], class: "images"%>
           <% end %>
             <%# 商品が売れていればsold outの表示   %>
