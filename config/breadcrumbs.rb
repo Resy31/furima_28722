@@ -2,6 +2,31 @@ crumb :root do
   link "Home", root_path
 end
 
+crumb :new_item do 
+  link "商品出品", new_item_path
+  parent :root
+end
+
+crumb :items do |item|
+  link "商品詳細", item_path
+  parent :root
+end
+
+crumb :item_purchase do |item|
+  link "商品詳細", item_path(item)
+  parent :root
+end
+
+crumb :purchases do |item|
+  link "商品購入", item_purchases_path(item)
+  parent :item_purchase, item
+end
+
+crumb :edit do
+  link "商品編集", edit_item_path
+  parent :items
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
